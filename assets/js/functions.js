@@ -266,45 +266,55 @@ $lightboxMedia.each(function() {
 /*===============================================
   10. Contact Form
 ===============================================*/
-$("#contactform").on("submit", function(e) {
-  var name = $("#name").val();
-  var email = $("#email").val();
-  var subject = $("#subject").val();
-  var message = $("#message").val();
+$(document).ready(function () {
+  $("#contactform").on("submit", function (e) {
+    e.preventDefault(); // Prevent form submission
 
-  if (name === "") {
-    $("#name").addClass("error-color");
-  }
-  if (email === "") {
-    $("#email").addClass("error-color");
-  }
-  if (subject === "") {
-    $("#subject").addClass("error-color");
-  }
-  if (message === "") {
-    $("#message").addClass("error-color");
-  }
+    var name = $("#name").val().trim();
+    var email = $("#email").val().trim();
+    var subject = $("#subject").val().trim();
+    var message = $("#message").val().trim();
+    var hasError = false;
 
-  else {
-    $.ajax({
-      url:"assets/php/contact-form.php",
-      data:$(this).serialize(),
-      type:"POST",
-      success:function(data){
-        $("#success").addClass("show-result"); //=== Show Success Message==
-        $("#contactform").each(function(){
-          this.reset();
-        });
-      },
-      error:function(data){
-        $("#error").addClass("show-result"); //===Show Error Message====
-      }
-    });
-    var forms = $("#contactform input, #contactform textarea");
-    forms.removeClass("error-color");
-  }
+    // Reset previous errors
+    $("#contactform input, #contactform textarea").removeClass("error-color");
 
-  e.preventDefault();
+    if (name === "") {
+      $("#name").addClass("error-color");
+      hasError = true;
+    }
+    if (email === "") {
+      $("#email").addClass("error-color");
+      hasError = true;
+    }
+    if (subject === "") {
+      $("#subject").addClass("error-color");
+      hasError = true;
+    }
+    if (message === "") {
+      $("#message").addClass("error-color");
+      hasError = true;
+    }
+
+    if (!hasError) {
+      $.ajax({
+        url: "assets/php/contact-form.php",
+        type: "POST",
+        data: $(this).serialize(),
+        success: function (response) {
+          if (response.trim() === "success") {
+            $("#success").addClass("show-result").text("Thank you! Your message has been sent.");
+            $("#contactform")[0].reset();
+          } else {
+            $("#error").addClass("show-result").text("Something went wrong, please try again.");
+          }
+        },
+        error: function () {
+          $("#error").addClass("show-result").text("Something went wrong, please try again.");
+        },
+      });
+    }
+  });
 });
 
 

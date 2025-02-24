@@ -526,7 +526,7 @@
                   </div>
                 </div>
 
-                <div class="swiper-slide">
+                <!-- <div class="swiper-slide">
                   <div class="testimonial-box">
                     <div class="d-block text-yellow mb-3">
                       <i class="bi bi-star-fill"></i>
@@ -553,7 +553,7 @@
                       <span class="font-small fw-normal">DevSecOps Manager, The Kenya Airways</span>
                     </div>
                   </div>
-                </div>
+                </div> -->
 
                 <div class="swiper-slide">
                   <div class="testimonial-box">
@@ -568,7 +568,7 @@
                       Kipkemoi's designs tell stories — whether it’s a digital
                       banner or a presentation layout. He understands the
                       power of visuals and knows how to make audiences connect
-                      emotionally with a brand or idea.
+                      emotionally with a brand or idea. I highly recommend him.
                     </p>
                   </div>
                   <div class="d-flex align-items-center mt-3">
@@ -596,8 +596,8 @@
                     <p>
                       He is not just a designer but a problem-solver. His
                       designs elevate brand messaging, making complex ideas
-                      visually simple and effective. His commitment to client
-                      satisfaction is commendable.
+                      visually simple and effective. Elvis' designs are visually impactful and align
+                      perfectly with technical project requirements
                     </p>
                   </div>
                   <div class="d-flex align-items-center mt-3">
@@ -646,7 +646,7 @@
               <div class="col-12 col-md-10 col-xl-8">
                 <div class="d-flex align-items-center">
                   <h6 class="title-heading mb-3 me-3" data-backdrop-text="Resume">
-                    Resume
+                   Download Resume
                   </h6>
                   <!-- Rounded Cloud Download Icon -->
                 </div>
@@ -1043,17 +1043,18 @@
             <div class="mt-4 mt-lg-5">
               <!-- Contact Form -->
               <div class="contact-form">
-                <form method="post" id="contactform">
+                <form action="https://api.web3forms.com/submit" method="POST">
                   <div class="row gx-3 gy-0">
                     <div class="col-12 col-md-6">
-                      <input type="text" id="name" name="name" placeholder="Name" required />
+                      <input type="hidden" name="access_key" value="fd746567-bd6d-489e-9865-c9f2bb2054ab">
+                      <input type="text" name="name" placeholder="Name" required />
                     </div>
                     <div class="col-12 col-md-6">
-                      <input type="email" id="email" name="email" placeholder="E-Mail" required />
+                      <input type="email" name="email" placeholder="E-Mail" required />
                     </div>
                   </div>
                   <input type="text" id="subject" name="subject" placeholder="Subject" required />
-                  <textarea name="message" id="message" placeholder="Message"></textarea>
+                  <textarea name="message" placeholder="Message"></textarea>
                   <button class="button button-md" type="submit">
                     Send Message
                   </button>
